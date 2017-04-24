@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="www.bkcoding.com" Class="MyDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=www.bkcoding.com;Persist Security Info=True;User ID=sa" SettingsObjectName="BK.Models.Properties.Settings" SettingsPropertyName="www_bkcoding_comConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.category" Member="category">
+    <Type Name="category">
+      <Column Name="category_id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="category_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="category_otherName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="category_posts" Member="posts" ThisKey="category_id" OtherKey="posts_categry" Type="posts" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[user]" Member="user">
+    <Type Name="user">
+      <Column Name="user_id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_isdel" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="user_loginName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="user_pwd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="user_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="user_isAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.posts" Member="posts">
+    <Type Name="posts">
+      <Column Name="posts_id" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="posts_isdel" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="posts_tile" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="posts_img" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="posts_writer" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="posts_createTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="posts_readCount" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="posts_categry" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="posts_commentCount" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="posts_abstract" Type="System.String" DbType="VarChar(350)" CanBeNull="true" />
+      <Column Name="posts_content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="category_posts" Member="category" ThisKey="posts_categry" OtherKey="category_id" Type="category" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+</Database>

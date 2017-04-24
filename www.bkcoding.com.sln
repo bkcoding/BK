@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BK.Models", "BK.Models\BK.Models.csproj", "{684A137F-4ED8-4DBE-A947-811E29EAC68C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BK.BLL", "BK.BLL\BK.BLL.csproj", "{23D80351-A086-4A6C-82B4-5D61C98A45A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BK.Web", "BK.Web\BK.Web.csproj", "{273298D7-5788-481E-A80C-1D47ACC0E539}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{684A137F-4ED8-4DBE-A947-811E29EAC68C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{684A137F-4ED8-4DBE-A947-811E29EAC68C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{684A137F-4ED8-4DBE-A947-811E29EAC68C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{684A137F-4ED8-4DBE-A947-811E29EAC68C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23D80351-A086-4A6C-82B4-5D61C98A45A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D80351-A086-4A6C-82B4-5D61C98A45A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23D80351-A086-4A6C-82B4-5D61C98A45A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23D80351-A086-4A6C-82B4-5D61C98A45A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{273298D7-5788-481E-A80C-1D47ACC0E539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{273298D7-5788-481E-A80C-1D47ACC0E539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{273298D7-5788-481E-A80C-1D47ACC0E539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{273298D7-5788-481E-A80C-1D47ACC0E539}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

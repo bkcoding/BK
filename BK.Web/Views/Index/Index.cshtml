@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="blog-body">
+    <img src="~/res/img/timg.png" id="banner" width="100%" />
+
+    <!-- 这个一般才是真正的主体内容 -->
+    <div class="blog-container">
+        <div class="blog-main">
+            <!-- 网站公告提示 -->
+            <div class="tips shadow">
+                <i style="float:left;line-height:17px;" class="fa fa-volume-up"></i>
+                <div class="tips-container">
+                    <span style="color:red">偷偷告诉大家，本博客的后台管理也正在制作，为大家准备了游客专用账号！</span>
+                    <span style="color: red">网站新增留言回复啦！使用QQ登陆即可回复，人人都可以回复！</span>
+                    <span style="color: red">如果你觉得网站做得还不错，来Fly社区点个赞吧！<a href="http://fly.layui.com/case/2017/" target="_blank" style="color:#01AAED">点我前往</a></span>
+                    <span style="color: #009688">不落阁 &nbsp;—— &nbsp;一个.NET程序员的个人博客，新版网站采用Layui为前端框架，目前正在建设中！</span>
+                </div>
+            </div>
+            <!--左边文章列表-->
+            <div class="blog-main-left" id="latestPosts">
+
+                <div id="more"></div>
+            </div>
+            <!--右边小栏目-->
+            <div class="blog-main-right">
+
+
+
+                <div class="widget shadow">
+                    <div class="widget-title"><i class="fa fa-fire"></i><span>热文排行</span></div>
+                    <ul class="fa-ul">
+                        <li>
+                            <a href="detail.html">
+                                <span class="text layui-elip">Web安全之跨站请求伪造CSRF,ASP.NET MVC 防范跨站请求伪造（CSRF）</span>
+                                <span class="muted">
+                                    <i class="fa fa-clock-o"></i> 2017-06-01
+                                </span>
+                                <span class="muted">
+                                    <i class="fa fa-user"></i> 作者
+                                </span>
+                                <span class="muted">
+                                    <i class="fa fa-eye"></i> 12
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
