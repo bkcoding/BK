@@ -94,6 +94,7 @@
     <Content Include="res\css\style.css" />
     <Content Include="res\fonts\fontawesome-webfont.svg" />
     <Content Include="res\img\1.jpg" />
+    <Content Include="res\img\bkcoding.png" />
     <Content Include="res\img\timg.jpg" />
     <Content Include="res\img\timg.png" />
     <Content Include="res\js\app.js" />

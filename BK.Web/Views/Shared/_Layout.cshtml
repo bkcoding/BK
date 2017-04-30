@@ -8,10 +8,11 @@
     <link href="~/res/css/style.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="blog-nav layui-header">
-        <div class="blog-container">
+    <div class="layui-header header ">
+        <div class="layui-main">
 
-            <a class="blog-logo" href="/">BKCoding</a>
+            <a href="/" class="logo">BKCODING</a>
+
             <!-- 导航菜单 -->
             <ul class="layui-nav" lay-filter="nav" id="nav-view">
                 <li class="layui-nav-item layui-this">
@@ -31,10 +32,10 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </div>
     @RenderBody()
-    <footer class="blog-footer">
-        <p><span>Copyright</span><span>&copy;</span><span>@DateTime.Now.Year</span><a href="/">BKCoding</a><span><a href="http://www.bkcoding.com">www.bkcoding.com</a></span></p>
+    <footer class="footer">
+        <p><span>Copyright</span> <span>&copy;</span> <span>@DateTime.Now.Year</span> <a href="/"> BKCoding </a> <span><a href="http://www.bkcoding.com"> www.bkcoding.com </a></span></p>
         <p><a href="http://www.miibeian.gov.cn/" target="_blank">蜀ICP备16029915号-1</a></p>
     </footer>
     <script src="~/res/layui/layui.js"></script>
