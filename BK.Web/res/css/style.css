@@ -4,7 +4,9 @@ body {
     background: #eee;
     color: #444;
 }
-
+.layui-fluid {
+    padding: 0 !important;
+}
 .header {
     height: 59px;
     border-bottom: 1px solid #404553;
@@ -22,12 +24,47 @@ body {
     font-family: KaiTi;
 }
 
+.component {
+    position: absolute;
+    width: 200px;
+    top: 16px;
+    left: 185px;
+}
+
+    .component .layui-input {
+        height: 30px;
+        padding-left: 12px;
+        background-color: #424652;
+        background-color: rgba(255,255,255,.05);
+        border: none 0;
+        color: #fff;
+        font-size: 12px;
+    }
+
 .header .layui-nav {
     top: 0;
+    right: 0;
+    position: absolute;
     padding: 0;
     background: none;
 }
+/*导航皮肤               */
+.layui-bg-blue {
+    color: #fff !important;
+    background-color: #1E9FFF !important;
+}
+    .layui-bg-blue .layui-nav-bar, .layui-bg-blue .layui-nav-itemed:after, .layui-bg-blue .layui-this:after {
+        background-color: #93D1FF
+    }
 
+    .layui-bg-blue .layui-nav-child dd.layui-this {
+        background-color: #1E9FFF
+    }
+
+    .layui-bg-blue .layui-nav-itemed > a, .layui-nav-tree.layui-bg-blue .layui-nav-title a, .layui-nav-tree.layui-bg-blue .layui-nav-title a:hover {
+        background-color: #007DDB !important
+    }
+/*导航皮肤               */
 @media (min-width:768px) {
     .container {
         width: auto

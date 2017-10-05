@@ -12,6 +12,7 @@ namespace BK.Web.Controllers
         // GET: Posts
         public ActionResult Index()
         {
+            PostsFuns db = new PostsFuns();
             return View();
         }
 

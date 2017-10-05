@@ -1,49 +1,37 @@
-﻿
+﻿@using BK.BLL;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    PostsFuns pf = new PostsFuns();
 }
 <img src="~/res/img/timg.png" id="banner" width="100%" />
 <section class="container">
     <div class="content-wrap">
         <div class="content">
-            <article class="excerpt excerpt-1">
-                <a class="focus" href="http://bkcoding.cn/archives/587">
-                    <img src="http://bkcoding.cn/wp-content/uploads/2017/03/5ae92d965dd1327f1e2120aa1ba50fb9.gif" alt="10年后编程还有意义吗？-BkCoding" class="thumb">
-                </a>
-                <header>
-                    <a class="cat" href="http://bkcoding.cn/archives/category/programmer">程序人生<i></i></a>
-                    <h2>
-                        <a href="http://bkcoding.cn/archives/587" title="10年后编程还有意义吗？-BkCoding">10年后编程还有意义吗？</a>
-                    </h2>
-                </header>
-                <p class="meta">
-                    <time><i class="fa fa-clock-o"></i>2017-04-25</time>
-                    <span class="author"><i class="fa fa-user"></i>bkcoding</span>
-                    <span class="pv"><i class="fa fa-eye"></i>阅读(4)</span>
-                    <a class="pc" href="http://bkcoding.cn/archives/587#comments"><i class="fa fa-comments-o"></i>评论(1)</a>
-                </p>
-                <p class="note">这个是Quora上提出的一个问题。随着AI在近年来成为热门话题，并且在AlphaGo自学围棋击败了人类近10年最好的围棋选手之后，有人开始提出这个问题。具体来说这个问题有三层意思： 到2025年程序员还有没有用，到那个时候所谓的“程序员”是...</p>
-            </article>
-            <article class="excerpt excerpt-1">
-                <a class="focus" href="http://bkcoding.cn/archives/587">
-                    <img src="http://bkcoding.cn/wp-content/uploads/2017/03/5ae92d965dd1327f1e2120aa1ba50fb9.gif" alt="10年后编程还有意义吗？-BkCoding" class="thumb">
-                </a>
-                <header>
-                    <a class="cat" href="http://bkcoding.cn/archives/category/programmer">程序人生<i></i></a>
-                    <h2>
-                        <a href="http://bkcoding.cn/archives/587" title="10年后编程还有意义吗？-BkCoding">10年后编程还有意义吗？</a>
-                    </h2>
-                </header>
-                <p class="meta">
-                    <time><i class="fa fa-clock-o"></i>2017-04-25</time>
-                    <span class="author"><i class="fa fa-user"></i>bkcoding</span>
-                    <span class="pv"><i class="fa fa-eye"></i>阅读(4)</span>
-                    <a class="pc" href="http://bkcoding.cn/archives/587#comments"><i class="fa fa-comments-o"></i>评论(1)</a>
-                </p>
-                <p class="note">这个是Quora上提出的一个问题。随着AI在近年来成为热门话题，并且在AlphaGo自学围棋击败了人类近10年最好的围棋选手之后，有人开始提出这个问题。具体来说这个问题有三层意思： 到2025年程序员还有没有用，到那个时候所谓的“程序员”是...</p>
-            </article>
-        </div>        
+            @foreach (var item in pf.ViewListALL())
+            {
+                <article class="excerpt excerpt-1">
+                    <a class="focus" href="http://bkcoding.cn/archives/587">
+                        <img src="@item.posts_img" alt="10年后编程还有意义吗？-BkCoding" class="thumb">
+                    </a>
+                    <header>
+                        <a class="cat" href="http://bkcoding.cn/archives/category/programmer">@item.category.category_name <i></i></a>
+                        <h2>
+                            <a href="http://bkcoding.cn/archives/587" title="10年后编程还有意义吗？-BkCoding">@item.posts_tile</a>
+                        </h2>
+                    </header>
+                    <p class="meta">
+                        <time><i class="fa fa-clock-o"></i>@string.Format("{0:yyyy-MM-dd}", item.posts_createTime)</time>
+                        <span class="author"><i class="fa fa-user"></i>@item.posts_writer</span>
+                        <span class="pv"><i class="fa fa-eye"></i>阅读(@item.posts_readCount)</span>
+                        <a class="pc" href="http://bkcoding.cn/archives/587#comments"><i class="fa fa-comments-o"></i>评论(@item.posts_commentCount)</a>
+                    </p>
+                    <p class="note">@item.posts_abstract</p>
+                </article>
+            }
+
+           
+        </div>
     </div>
     <aside class="sidebar">
         <div class="widget shadow">
@@ -66,58 +54,6 @@
             </ul>
         </div>
     </aside>
-    
+
 </section>
 
-
-@*<div class="blog-body">
-    <img src="~/res/img/timg.png" id="banner" width="100%" />
-
-    <!-- 这个一般才是真正的主体内容 -->
-    <div class="blog-container">
-        <div class="blog-main">
-            <!-- 网站公告提示 -->
-            <div class="tips shadow">
-                <i style="float:left;line-height:17px;" class="fa fa-volume-up"></i>
-                <div class="tips-container">
-                    <span style="color:red">偷偷告诉大家，本博客的后台管理也正在制作，为大家准备了游客专用账号！</span>
-                    <span style="color: red">网站新增留言回复啦！使用QQ登陆即可回复，人人都可以回复！</span>
-                    <span style="color: red">如果你觉得网站做得还不错，来Fly社区点个赞吧！<a href="http://fly.layui.com/case/2017/" target="_blank" style="color:#01AAED">点我前往</a></span>
-                    <span style="color: #009688">不落阁 &nbsp;—— &nbsp;一个.NET程序员的个人博客，新版网站采用Layui为前端框架，目前正在建设中！</span>
-                </div>
-            </div>
-            <!--左边文章列表-->
-            <div class="blog-main-left" id="latestPosts">
-
-                <div id="more"></div>
-            </div>
-            <!--右边小栏目-->
-            <div class="blog-main-right">
-
-
-
-                <div class="widget shadow">
-                    <div class="widget-title"><i class="fa fa-fire"></i><span>热文排行</span></div>
-                    <ul class="fa-ul">
-                        <li>
-                            <a href="detail.html">
-                                <span class="text layui-elip">Web安全之跨站请求伪造CSRF,ASP.NET MVC 防范跨站请求伪造（CSRF）</span>
-                                <span class="muted">
-                                    <i class="fa fa-clock-o"></i> 2017-06-01
-                                </span>
-                                <span class="muted">
-                                    <i class="fa fa-user"></i> 作者
-                                </span>
-                                <span class="muted">
-                                    <i class="fa fa-eye"></i> 12
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-</div>*@

@@ -4,7 +4,7 @@ layui.define(['layer', 'laypage', 'laytpl', 'element', 'form', 'layedit', 'util'
         , laypage = layui.laypage
         , laytpl = layui.laytpl
         , layer = layui.layer
-        , form = layui.form()
+        , form = layui.form
         , flow = layui.flow
         , util = layui.util
         , device = layui.device();
