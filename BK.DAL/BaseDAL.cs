@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Linq;
+using BK.Models;
+using System.Runtime.Remoting.Messaging;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Runtime.Remoting.Messaging;
-using BK.Models;
+using System.Data.Linq;
 
-namespace BK.BLL
+namespace BK.DAL
 {
-    public abstract class Base<T> where T : class
+    public class BaseDAL<T> where T : class
     {
         private static DataContext GetCurrentContext()
         {
@@ -26,7 +25,7 @@ namespace BK.BLL
 
         public Table<T> db;
 
-        public Base()
+        public BaseDAL()
         {
             context = GetCurrentContext();
             db = context.GetTable<T>();
@@ -45,11 +44,6 @@ namespace BK.BLL
         public void AddNotSubmit(T model)
         {
             db.InsertOnSubmit(model);
-        }
-
-        public void AddListNotSubmit(List<T> model)
-        {
-            db.InsertAllOnSubmit(model);
         }
 
         public void DeleteNotSubmit(T model)
