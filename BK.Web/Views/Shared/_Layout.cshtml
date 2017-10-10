@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>@ViewBag.Title</title>
     <link href="http://res.bkcoding.com/layui/css/layui.css" rel="stylesheet" />
-    <link href="~/res/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="http://res.bkcoding.com/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/res/css/style.css" rel="stylesheet" />
 </head>
 <body>
@@ -16,9 +16,7 @@
             <div class="layui-main">
 
                 <a href="/" class="logo">BkCoding</a>
-                <div class="layui-form component">
-                    <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-                </div>
+                
                 <!-- 导航菜单 -->
                 <ul class="layui-nav" lay-filter="nav" id="nav-view">
                     <li class="layui-nav-item layui-this">
@@ -37,6 +35,9 @@
                         <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
                     </li>
                 </ul>
+                <div class="layui-form component">
+                    <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
             </div>
         </div>
         @RenderBody()

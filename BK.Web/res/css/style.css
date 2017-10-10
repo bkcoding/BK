@@ -28,7 +28,7 @@ body {
     position: absolute;
     width: 200px;
     top: 16px;
-    left: 185px;
+    right: 0;
 }
 
     .component .layui-input {
@@ -42,11 +42,12 @@ body {
     }
 
 .header .layui-nav {
-    top: 0;
-    right: 0;
-    position: absolute;
+    top: 0;    
     padding: 0;
     background: none;
+}
+.layui-nav .layui-this:after {
+    background-color: #393D49;
 }
 /*导航皮肤               */
 .layui-bg-blue {
