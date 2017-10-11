@@ -13,7 +13,7 @@ namespace BK.Models
             isDel = false;
             title = "";
             pic = "";
-            writer = "";
+            writer = "bkcoding";
             createTime = DateTime.Now;
             readcount = 0;
             excerpt = "";

@@ -13,7 +13,19 @@ layui.define(['layer', 'laypage', 'laytpl', 'element','util', 'flow'], function 
     }
     //固定Bar
     util.fixbar();
-
+    var json;
+    json += "[";
+    $(".excerpt").each(function (i) {
+        json += "{";
+        json += '"title":"' + $(this).find("h2 a").text() + '","pic":"' + $(this).find(".focus img").attr("src") + '",';
+        json += '"createTime":"' + $(this).find("time").text() + '","excerpt":"' + $(this).find(".note").text() + '"';
+        json += '}';
+        if (i < ($(".excerpt").length - 1)) {
+            json += ',';
+        }
+    });
+    json += "]";
+    console.log(json);
     //时钟
     var clock = $('#clock'),
 		alarm = clock.find('.alarm'),
