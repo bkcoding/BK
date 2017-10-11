@@ -16,22 +16,22 @@ namespace BK.BLL
 
         public abstract void SetDAL();
 
-        public bool Add(T t)
+        public void Add(T t)
         {
             DAL.AddNotSubmit(t);
-            return DAL.SaveChanges();
+            DAL.SaveChanges();
         }
 
-        public bool Update(T t)
+        public void Update(T t)
         {
             DAL.Update(t);
-            return DAL.SaveChanges();
+            DAL.SaveChanges();
         }
 
-        public bool Del(T t)
+        public void Del(T t)
         {
             DAL.DelNotSubmit(t);
-            return DAL.SaveChanges();
+            DAL.SaveChanges();
         }
 
         public IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda)

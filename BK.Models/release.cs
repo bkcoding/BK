@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BK.Models
 {
-    public partial class category
+    public partial class release
     {
         partial void OnCreated()
         {
-            category_name = "";
-            category_otherName = "";
+            time = DateTime.Now;
+            isTop = false;          
         }
     }
 }

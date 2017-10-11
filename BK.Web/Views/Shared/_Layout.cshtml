@@ -16,23 +16,23 @@
             <div class="layui-main">
 
                 <a href="/" class="logo">BkCoding</a>
-                
+
                 <!-- 导航菜单 -->
                 <ul class="layui-nav" lay-filter="nav" id="nav-view">
                     <li class="layui-nav-item layui-this">
-                        <a href="home.html"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+                        <a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="article.html"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+                        <a href="@Url.Action("Index","Posts",new {c="note" })"><i class="fa fa-file-text fa-fw"></i>&nbsp;日常随笔</a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="resource.html"><i class="fa fa-tags fa-fw"></i>&nbsp;资源分享</a>
+                        <a href="@Url.Action("Index","Posts",new {c="programmer" })"><i class="fa fa-tags fa-fw"></i>&nbsp;程序人生</a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;点点滴滴</a>
+                        <a href="@Url.Action("Index","Posts",new {c="file" })"><i class="fa fa-tags fa-fw"></i>&nbsp;资源分享</a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+                        <a href="/Posts/Details/1"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
                     </li>
                 </ul>
                 <div class="layui-form component">

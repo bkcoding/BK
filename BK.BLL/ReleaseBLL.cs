@@ -4,9 +4,9 @@ using BK.IDAL;
 
 namespace BK.BLL
 {
-    public class PostsBLL : BaseBLL<posts>, IPostsBLL
+    public class ReleaseBLL:BaseBLL<release>, IReleaseBLL
     {
-        private IPostsDAL _dal = DALContainer.Container.Resolve<IPostsDAL>();
+        private IReleaseDAL _dal = DALContainer.Container.Resolve<IReleaseDAL>();
 
         public override void SetDAL()
         {

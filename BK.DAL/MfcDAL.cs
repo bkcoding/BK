@@ -3,7 +3,7 @@ using BK.IDAL;
 
 namespace BK.DAL
 {
-    public class UserDAL:BaseDAL<user>, IUserDAL
-    {
+    public class MfcDAL : BaseDAL<mfc>, IMfcDAL
+    {        
     }
 }

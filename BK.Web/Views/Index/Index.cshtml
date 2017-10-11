@@ -2,31 +2,31 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    PostsFuns pf = new PostsFuns();
+    PostsBLL pf = new PostsBLL();
 }
 <img src="~/res/img/timg.jpg" id="banner" width="100%" height="500" />
 <section class="container">
     <div class="content-wrap">
         <div class="content">
-            @foreach (var item in pf.ViewListALL())
+            @foreach (var item in pf.GetModels(d=>true))
             {
                 <article class="excerpt excerpt-1">
                     <a class="focus" href="http://bkcoding.cn/archives/587">
-                        <img src="@item.posts_img" alt="10年后编程还有意义吗？-BkCoding" class="thumb">
+                        <img src="@item.pic" alt="10年后编程还有意义吗？-BkCoding" class="thumb">
                     </a>
                     <header>
-                        <a class="cat" href="http://bkcoding.cn/archives/category/programmer">@item.category.category_name <i></i></a>
+                        <a class="cat" href="http://bkcoding.cn/archives/category/programmer">分类 <i></i></a>
                         <h2>
-                            <a href="http://bkcoding.cn/archives/587" title="10年后编程还有意义吗？-BkCoding">@item.posts_tile</a>
+                            <a href="http://bkcoding.cn/archives/587" title="10年后编程还有意义吗？-BkCoding">@item.title</a>
                         </h2>
                     </header>
                     <p class="meta">
-                        <time><i class="fa fa-clock-o"></i>@string.Format("{0:yyyy-MM-dd}", item.posts_createTime)</time>
-                        <span class="author"><i class="fa fa-user"></i>@item.posts_writer</span>
-                        <span class="pv"><i class="fa fa-eye"></i>阅读(@item.posts_readCount)</span>
-                        <a class="pc" href="http://bkcoding.cn/archives/587#comments"><i class="fa fa-comments-o"></i>评论(@item.posts_commentCount)</a>
+                        <time><i class="fa fa-clock-o"></i>@string.Format("{0:yyyy-MM-dd}", item.createTime)</time>
+                        <span class="author"><i class="fa fa-user"></i>@item.writer</span>
+                        <span class="pv"><i class="fa fa-eye"></i>阅读(@item.readcount)</span>
+                        <a class="pc" href="http://bkcoding.cn/archives/587#comments"><i class="fa fa-comments-o"></i>评论(0)</a>
                     </p>
-                    <p class="note">@item.posts_abstract</p>
+                    <p class="note">@item.excerpt</p>
                 </article>
             }
 

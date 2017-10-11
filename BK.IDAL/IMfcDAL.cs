@@ -1,7 +1,7 @@
 ﻿using BK.Models;
 namespace BK.IDAL
 {
-    public interface IPostsDAL:IBaseDAL<posts>
+    public interface IMfcDAL:IBaseDAL<mfc>
     {
     }
 }

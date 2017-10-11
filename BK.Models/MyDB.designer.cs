@@ -30,15 +30,15 @@ namespace BK.Models
 		
     #region 可扩展性方法定义
     partial void OnCreated();
-    partial void Insertcategory(category instance);
-    partial void Updatecategory(category instance);
-    partial void Deletecategory(category instance);
-    partial void Insertuser(user instance);
-    partial void Updateuser(user instance);
-    partial void Deleteuser(user instance);
+    partial void Insertrelease(release instance);
+    partial void Updaterelease(release instance);
+    partial void Deleterelease(release instance);
     partial void Insertposts(posts instance);
     partial void Updateposts(posts instance);
     partial void Deleteposts(posts instance);
+    partial void Insertmfc(mfc instance);
+    partial void Updatemfc(mfc instance);
+    partial void Deletemfc(mfc instance);
     #endregion
 		
 		public MyDBDataContext() : 
@@ -71,19 +71,11 @@ namespace BK.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<category> category
+		public System.Data.Linq.Table<release> release
 		{
 			get
 			{
-				return this.GetTable<category>();
-			}
-		}
-		
-		public System.Data.Linq.Table<user> user
-		{
-			get
-			{
-				return this.GetTable<user>();
+				return this.GetTable<release>();
 			}
 		}
 		
@@ -94,303 +86,149 @@ namespace BK.Models
 				return this.GetTable<posts>();
 			}
 		}
+		
+		public System.Data.Linq.Table<mfc> mfc
+		{
+			get
+			{
+				return this.GetTable<mfc>();
+			}
+		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category")]
-	public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.release")]
+	public partial class release : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private decimal _category_id;
+		private int _id;
 		
-		private string _category_name;
+		private int _postsID;
 		
-		private string _category_otherName;
+		private int _mfcID;
 		
-		private EntitySet<posts> _posts;
+		private System.DateTime _time;
+		
+		private bool _isTop;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Oncategory_idChanging(decimal value);
-    partial void Oncategory_idChanged();
-    partial void Oncategory_nameChanging(string value);
-    partial void Oncategory_nameChanged();
-    partial void Oncategory_otherNameChanging(string value);
-    partial void Oncategory_otherNameChanged();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnpostsIDChanging(int value);
+    partial void OnpostsIDChanged();
+    partial void OnmfcIDChanging(int value);
+    partial void OnmfcIDChanged();
+    partial void OntimeChanging(System.DateTime value);
+    partial void OntimeChanged();
+    partial void OnisTopChanging(bool value);
+    partial void OnisTopChanged();
     #endregion
 		
-		public category()
-		{
-			this._posts = new EntitySet<posts>(new Action<posts>(this.attach_posts), new Action<posts>(this.detach_posts));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_category_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal category_id
-		{
-			get
-			{
-				return this._category_id;
-			}
-			set
-			{
-				if ((this._category_id != value))
-				{
-					this.Oncategory_idChanging(value);
-					this.SendPropertyChanging();
-					this._category_id = value;
-					this.SendPropertyChanged("category_id");
-					this.Oncategory_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_category_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string category_name
-		{
-			get
-			{
-				return this._category_name;
-			}
-			set
-			{
-				if ((this._category_name != value))
-				{
-					this.Oncategory_nameChanging(value);
-					this.SendPropertyChanging();
-					this._category_name = value;
-					this.SendPropertyChanged("category_name");
-					this.Oncategory_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_category_otherName", DbType="VarChar(50)")]
-		public string category_otherName
-		{
-			get
-			{
-				return this._category_otherName;
-			}
-			set
-			{
-				if ((this._category_otherName != value))
-				{
-					this.Oncategory_otherNameChanging(value);
-					this.SendPropertyChanging();
-					this._category_otherName = value;
-					this.SendPropertyChanged("category_otherName");
-					this.Oncategory_otherNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_posts", Storage="_posts", ThisKey="category_id", OtherKey="posts_categry")]
-		public EntitySet<posts> posts
-		{
-			get
-			{
-				return this._posts;
-			}
-			set
-			{
-				this._posts.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_posts(posts entity)
-		{
-			this.SendPropertyChanging();
-			entity.category = this;
-		}
-		
-		private void detach_posts(posts entity)
-		{
-			this.SendPropertyChanging();
-			entity.category = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[user]")]
-	public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private decimal _user_id;
-		
-		private bool _user_isdel;
-		
-		private string _user_loginName;
-		
-		private string _user_pwd;
-		
-		private string _user_name;
-		
-		private bool _user_isAdmin;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onuser_idChanging(decimal value);
-    partial void Onuser_idChanged();
-    partial void Onuser_isdelChanging(bool value);
-    partial void Onuser_isdelChanged();
-    partial void Onuser_loginNameChanging(string value);
-    partial void Onuser_loginNameChanged();
-    partial void Onuser_pwdChanging(string value);
-    partial void Onuser_pwdChanged();
-    partial void Onuser_nameChanging(string value);
-    partial void Onuser_nameChanged();
-    partial void Onuser_isAdminChanging(bool value);
-    partial void Onuser_isAdminChanged();
-    #endregion
-		
-		public user()
+		public release()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal user_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
 		{
 			get
 			{
-				return this._user_id;
+				return this._id;
 			}
 			set
 			{
-				if ((this._user_id != value))
+				if ((this._id != value))
 				{
-					this.Onuser_idChanging(value);
+					this.OnidChanging(value);
 					this.SendPropertyChanging();
-					this._user_id = value;
-					this.SendPropertyChanged("user_id");
-					this.Onuser_idChanged();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_isdel", DbType="Bit NOT NULL")]
-		public bool user_isdel
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_postsID", DbType="Int NOT NULL")]
+		public int postsID
 		{
 			get
 			{
-				return this._user_isdel;
+				return this._postsID;
 			}
 			set
 			{
-				if ((this._user_isdel != value))
+				if ((this._postsID != value))
 				{
-					this.Onuser_isdelChanging(value);
+					this.OnpostsIDChanging(value);
 					this.SendPropertyChanging();
-					this._user_isdel = value;
-					this.SendPropertyChanged("user_isdel");
-					this.Onuser_isdelChanged();
+					this._postsID = value;
+					this.SendPropertyChanged("postsID");
+					this.OnpostsIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_loginName", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string user_loginName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mfcID", DbType="Int NOT NULL")]
+		public int mfcID
 		{
 			get
 			{
-				return this._user_loginName;
+				return this._mfcID;
 			}
 			set
 			{
-				if ((this._user_loginName != value))
+				if ((this._mfcID != value))
 				{
-					this.Onuser_loginNameChanging(value);
+					this.OnmfcIDChanging(value);
 					this.SendPropertyChanging();
-					this._user_loginName = value;
-					this.SendPropertyChanged("user_loginName");
-					this.Onuser_loginNameChanged();
+					this._mfcID = value;
+					this.SendPropertyChanged("mfcID");
+					this.OnmfcIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_pwd", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string user_pwd
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time", DbType="DateTime NOT NULL")]
+		public System.DateTime time
 		{
 			get
 			{
-				return this._user_pwd;
+				return this._time;
 			}
 			set
 			{
-				if ((this._user_pwd != value))
+				if ((this._time != value))
 				{
-					this.Onuser_pwdChanging(value);
+					this.OntimeChanging(value);
 					this.SendPropertyChanging();
-					this._user_pwd = value;
-					this.SendPropertyChanged("user_pwd");
-					this.Onuser_pwdChanged();
+					this._time = value;
+					this.SendPropertyChanged("time");
+					this.OntimeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string user_name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isTop", DbType="Bit NOT NULL")]
+		public bool isTop
 		{
 			get
 			{
-				return this._user_name;
+				return this._isTop;
 			}
 			set
 			{
-				if ((this._user_name != value))
+				if ((this._isTop != value))
 				{
-					this.Onuser_nameChanging(value);
+					this.OnisTopChanging(value);
 					this.SendPropertyChanging();
-					this._user_name = value;
-					this.SendPropertyChanged("user_name");
-					this.Onuser_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_isAdmin", DbType="Bit NOT NULL")]
-		public bool user_isAdmin
-		{
-			get
-			{
-				return this._user_isAdmin;
-			}
-			set
-			{
-				if ((this._user_isAdmin != value))
-				{
-					this.Onuser_isAdminChanging(value);
-					this.SendPropertyChanging();
-					this._user_isAdmin = value;
-					this.SendPropertyChanged("user_isAdmin");
-					this.Onuser_isAdminChanged();
+					this._isTop = value;
+					this.SendPropertyChanged("isTop");
+					this.OnisTopChanged();
 				}
 			}
 		}
@@ -422,318 +260,411 @@ namespace BK.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private decimal _posts_id;
+		private int _id;
 		
-		private bool _posts_isdel;
+		private System.DateTime _createTime;
 		
-		private string _posts_tile;
+		private string _writer;
 		
-		private string _posts_img;
+		private bool _isDel;
 		
-		private string _posts_writer;
+		private string _title;
 		
-		private System.DateTime _posts_createTime;
+		private string _pic;
 		
-		private decimal _posts_readCount;
+		private string _excerpt;
 		
-		private System.Nullable<decimal> _posts_categry;
+		private decimal _readcount;
 		
-		private decimal _posts_commentCount;
-		
-		private string _posts_abstract;
-		
-		private string _posts_content;
-		
-		private EntityRef<category> _category;
+		private string _content;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onposts_idChanging(decimal value);
-    partial void Onposts_idChanged();
-    partial void Onposts_isdelChanging(bool value);
-    partial void Onposts_isdelChanged();
-    partial void Onposts_tileChanging(string value);
-    partial void Onposts_tileChanged();
-    partial void Onposts_imgChanging(string value);
-    partial void Onposts_imgChanged();
-    partial void Onposts_writerChanging(string value);
-    partial void Onposts_writerChanged();
-    partial void Onposts_createTimeChanging(System.DateTime value);
-    partial void Onposts_createTimeChanged();
-    partial void Onposts_readCountChanging(decimal value);
-    partial void Onposts_readCountChanged();
-    partial void Onposts_categryChanging(System.Nullable<decimal> value);
-    partial void Onposts_categryChanged();
-    partial void Onposts_commentCountChanging(decimal value);
-    partial void Onposts_commentCountChanged();
-    partial void Onposts_abstractChanging(string value);
-    partial void Onposts_abstractChanged();
-    partial void Onposts_contentChanging(string value);
-    partial void Onposts_contentChanged();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OncreateTimeChanging(System.DateTime value);
+    partial void OncreateTimeChanged();
+    partial void OnwriterChanging(string value);
+    partial void OnwriterChanged();
+    partial void OnisDelChanging(bool value);
+    partial void OnisDelChanged();
+    partial void OntitleChanging(string value);
+    partial void OntitleChanged();
+    partial void OnpicChanging(string value);
+    partial void OnpicChanged();
+    partial void OnexcerptChanging(string value);
+    partial void OnexcerptChanged();
+    partial void OnreadcountChanging(decimal value);
+    partial void OnreadcountChanged();
+    partial void OncontentChanging(string value);
+    partial void OncontentChanged();
     #endregion
 		
 		public posts()
 		{
-			this._category = default(EntityRef<category>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posts_id", AutoSync=AutoSync.OnInsert, DbType="Decimal(18,0) NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public decimal posts_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
 		{
 			get
 			{
-				return this._posts_id;
+				return this._id;
 			}
 			set
 			{
-				if ((this._posts_id != value))
+				if ((this._id != value))
 				{
-					this.Onposts_idChanging(value);
+					this.OnidChanging(value);
 					this.SendPropertyChanging();
-					this._posts_id = value;
-					this.SendPropertyChanged("posts_id");
-					this.Onposts_idChanged();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posts_isdel", DbType="Bit NOT NULL")]
-		public bool posts_isdel
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createTime", DbType="DateTime NOT NULL")]
+		public System.DateTime createTime
 		{
 			get
 			{
-				return this._posts_isdel;
+				return this._createTime;
 			}
 			set
 			{
-				if ((this._posts_isdel != value))
+				if ((this._createTime != value))
 				{
-					this.Onposts_isdelChanging(value);
+					this.OncreateTimeChanging(value);
 					this.SendPropertyChanging();
-					this._posts_isdel = value;
-					this.SendPropertyChanged("posts_isdel");
-					this.Onposts_isdelChanged();
+					this._createTime = value;
+					this.SendPropertyChanged("createTime");
+					this.OncreateTimeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posts_tile", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string posts_tile
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_writer", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string writer
 		{
 			get
 			{
-				return this._posts_tile;
+				return this._writer;
 			}
 			set
 			{
-				if ((this._posts_tile != value))
+				if ((this._writer != value))
 				{
-					this.Onposts_tileChanging(value);
+					this.OnwriterChanging(value);
 					this.SendPropertyChanging();
-					this._posts_tile = value;
-					this.SendPropertyChanged("posts_tile");
-					this.Onposts_tileChanged();
+					this._writer = value;
+					this.SendPropertyChanged("writer");
+					this.OnwriterChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posts_img", DbType="VarChar(200)")]
-		public string posts_img
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isDel", DbType="Bit NOT NULL")]
+		public bool isDel
 		{
 			get
 			{
-				return this._posts_img;
+				return this._isDel;
 			}
 			set
 			{
-				if ((this._posts_img != value))
+				if ((this._isDel != value))
 				{
-					this.Onposts_imgChanging(value);
+					this.OnisDelChanging(value);
 					this.SendPropertyChanging();
-					this._posts_img = value;
-					this.SendPropertyChanged("posts_img");
-					this.Onposts_imgChanged();
+					this._isDel = value;
+					this.SendPropertyChanged("isDel");
+					this.OnisDelChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posts_writer", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string posts_writer
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string title
 		{
 			get
 			{
-				return this._posts_writer;
+				return this._title;
 			}
 			set
 			{
-				if ((this._posts_writer != value))
+				if ((this._title != value))
 				{
-					this.Onposts_writerChanging(value);
+					this.OntitleChanging(value);
 					this.SendPropertyChanging();
-					this._posts_writer = value;
-					this.SendPropertyChanged("posts_writer");
-					this.Onposts_writerChanged();
+					this._title = value;
+					this.SendPropertyChanged("title");
+					this.OntitleChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posts_createTime", DbType="DateTime NOT NULL")]
-		public System.DateTime posts_createTime
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pic", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string pic
 		{
 			get
 			{
-				return this._posts_createTime;
+				return this._pic;
 			}
 			set
 			{
-				if ((this._posts_createTime != value))
+				if ((this._pic != value))
 				{
-					this.Onposts_createTimeChanging(value);
+					this.OnpicChanging(value);
 					this.SendPropertyChanging();
-					this._posts_createTime = value;
-					this.SendPropertyChanged("posts_createTime");
-					this.Onposts_createTimeChanged();
+					this._pic = value;
+					this.SendPropertyChanged("pic");
+					this.OnpicChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posts_readCount", DbType="Decimal(18,0) NOT NULL")]
-		public decimal posts_readCount
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_excerpt", DbType="NVarChar(150) NOT NULL", CanBeNull=false)]
+		public string excerpt
 		{
 			get
 			{
-				return this._posts_readCount;
+				return this._excerpt;
 			}
 			set
 			{
-				if ((this._posts_readCount != value))
+				if ((this._excerpt != value))
 				{
-					this.Onposts_readCountChanging(value);
+					this.OnexcerptChanging(value);
 					this.SendPropertyChanging();
-					this._posts_readCount = value;
-					this.SendPropertyChanged("posts_readCount");
-					this.Onposts_readCountChanged();
+					this._excerpt = value;
+					this.SendPropertyChanged("excerpt");
+					this.OnexcerptChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posts_categry", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> posts_categry
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_readcount", DbType="Decimal(18,0) NOT NULL")]
+		public decimal readcount
 		{
 			get
 			{
-				return this._posts_categry;
+				return this._readcount;
 			}
 			set
 			{
-				if ((this._posts_categry != value))
+				if ((this._readcount != value))
 				{
-					if (this._category.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onposts_categryChanging(value);
+					this.OnreadcountChanging(value);
 					this.SendPropertyChanging();
-					this._posts_categry = value;
-					this.SendPropertyChanged("posts_categry");
-					this.Onposts_categryChanged();
+					this._readcount = value;
+					this.SendPropertyChanged("readcount");
+					this.OnreadcountChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posts_commentCount", DbType="Decimal(18,0) NOT NULL")]
-		public decimal posts_commentCount
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_content", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string content
 		{
 			get
 			{
-				return this._posts_commentCount;
+				return this._content;
 			}
 			set
 			{
-				if ((this._posts_commentCount != value))
+				if ((this._content != value))
 				{
-					this.Onposts_commentCountChanging(value);
+					this.OncontentChanging(value);
 					this.SendPropertyChanging();
-					this._posts_commentCount = value;
-					this.SendPropertyChanged("posts_commentCount");
-					this.Onposts_commentCountChanged();
+					this._content = value;
+					this.SendPropertyChanged("content");
+					this.OncontentChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posts_abstract", DbType="VarChar(350)")]
-		public string posts_abstract
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.mfc")]
+	public partial class mfc : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _name;
+		
+		private string _otherName;
+		
+		private string _type;
+		
+		private int _orderby;
+		
+		private string _icon;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnotherNameChanging(string value);
+    partial void OnotherNameChanged();
+    partial void OntypeChanging(string value);
+    partial void OntypeChanged();
+    partial void OnorderbyChanging(int value);
+    partial void OnorderbyChanged();
+    partial void OniconChanging(string value);
+    partial void OniconChanged();
+    #endregion
+		
+		public mfc()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
 		{
 			get
 			{
-				return this._posts_abstract;
+				return this._id;
 			}
 			set
 			{
-				if ((this._posts_abstract != value))
+				if ((this._id != value))
 				{
-					this.Onposts_abstractChanging(value);
+					this.OnidChanging(value);
 					this.SendPropertyChanging();
-					this._posts_abstract = value;
-					this.SendPropertyChanged("posts_abstract");
-					this.Onposts_abstractChanged();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posts_content", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string posts_content
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string name
 		{
 			get
 			{
-				return this._posts_content;
+				return this._name;
 			}
 			set
 			{
-				if ((this._posts_content != value))
+				if ((this._name != value))
 				{
-					this.Onposts_contentChanging(value);
+					this.OnnameChanging(value);
 					this.SendPropertyChanging();
-					this._posts_content = value;
-					this.SendPropertyChanged("posts_content");
-					this.Onposts_contentChanged();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_posts", Storage="_category", ThisKey="posts_categry", OtherKey="category_id", IsForeignKey=true, DeleteRule="SET NULL")]
-		public category category
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_otherName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string otherName
 		{
 			get
 			{
-				return this._category.Entity;
+				return this._otherName;
 			}
 			set
 			{
-				category previousValue = this._category.Entity;
-				if (((previousValue != value) 
-							|| (this._category.HasLoadedOrAssignedValue == false)))
+				if ((this._otherName != value))
 				{
+					this.OnotherNameChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._category.Entity = null;
-						previousValue.posts.Remove(this);
-					}
-					this._category.Entity = value;
-					if ((value != null))
-					{
-						value.posts.Add(this);
-						this._posts_categry = value.category_id;
-					}
-					else
-					{
-						this._posts_categry = default(Nullable<decimal>);
-					}
-					this.SendPropertyChanged("category");
+					this._otherName = value;
+					this.SendPropertyChanged("otherName");
+					this.OnotherNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string type
+		{
+			get
+			{
+				return this._type;
+			}
+			set
+			{
+				if ((this._type != value))
+				{
+					this.OntypeChanging(value);
+					this.SendPropertyChanging();
+					this._type = value;
+					this.SendPropertyChanged("type");
+					this.OntypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_orderby", DbType="Int NOT NULL")]
+		public int orderby
+		{
+			get
+			{
+				return this._orderby;
+			}
+			set
+			{
+				if ((this._orderby != value))
+				{
+					this.OnorderbyChanging(value);
+					this.SendPropertyChanging();
+					this._orderby = value;
+					this.SendPropertyChanged("orderby");
+					this.OnorderbyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_icon", DbType="VarChar(20)")]
+		public string icon
+		{
+			get
+			{
+				return this._icon;
+			}
+			set
+			{
+				if ((this._icon != value))
+				{
+					this.OniconChanging(value);
+					this.SendPropertyChanging();
+					this._icon = value;
+					this.SendPropertyChanged("icon");
+					this.OniconChanged();
 				}
 			}
 		}

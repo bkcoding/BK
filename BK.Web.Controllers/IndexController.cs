@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 namespace BK.Web.Controllers
 {
-    public class TempLateController : Controller
-    {        
-        public ActionResult latestPosts()
+    public class IndexController : Controller
+    {
+        public ActionResult Index()
         {
             return View();
-        }
+        }        
     }
 }

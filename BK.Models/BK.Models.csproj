@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="category.cs" />
+    <Compile Include="mfc.cs" />
     <Compile Include="MyDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -54,7 +54,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="user.cs" />
+    <Compile Include="release.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

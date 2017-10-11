@@ -3,7 +3,7 @@ using BK.IDAL;
 
 namespace BK.DAL
 {
-    public class CategoryDAL:BaseDAL<category>, ICategoryDAL
+    public class ReleaseDAL:BaseDAL<release>, IReleaseDAL
     {
     }
 }

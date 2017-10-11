@@ -31,14 +31,27 @@ namespace BK.DAL
             db = context.GetTable<T>();
         }
 
-        public virtual IQueryable<T> ViewListALL()
+        public void Update(T model)
         {
-            return db;
         }
 
-        public IQueryable<T> ViewListWhere(Expression<Func<T, bool>> where)
+        public IQueryable<T> GetModels(Expression<Func<T, bool>> where)
         {
             return db.Where(where);
+        }
+
+        public IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc,
+            Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda)
+        {
+            //是否升序
+            if (isAsc)
+            {
+                return db.Where(WhereLambda).OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            }
+            else
+            {
+                return db.Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            }
         }
 
         public void AddNotSubmit(T model)
@@ -46,12 +59,12 @@ namespace BK.DAL
             db.InsertOnSubmit(model);
         }
 
-        public void DeleteNotSubmit(T model)
+        public void DelNotSubmit(T model)
         {
             db.DeleteOnSubmit(model);
         }
 
-        public void Save()
+        public void SaveChanges()
         {
             context.SubmitChanges();
         }

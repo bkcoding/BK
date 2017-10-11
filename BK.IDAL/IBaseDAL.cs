@@ -11,6 +11,6 @@ namespace BK.IDAL
         void Update(T t);
         IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda);
         IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc, Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda);
-        bool SaveChanges();
+        void SaveChanges();
     }
 }
