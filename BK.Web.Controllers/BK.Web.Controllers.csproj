@@ -71,6 +71,7 @@
     <Compile Include="IndexController.cs" />
     <Compile Include="PostsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SidebarController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

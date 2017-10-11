@@ -1,0 +1,40 @@
+﻿
+@switch (Convert.ToString(Request.QueryString["type"] ?? ""))
+{
+    case "clock":
+        <div class="widget shadow">
+            <div id="clock" class="dark">
+                <div class="display">
+                    <div class="weekdays"></div>
+                    <div class="ampm"></div>
+                    <div class="alarm"></div>
+                    <div class="digits"></div>
+                </div>
+            </div>
+        </div>
+        break;
+    case "":
+        <div class="widget shadow">
+            <div class="widget-title"><i class="fa fa-fire"></i><span>热文排行</span></div>
+            <ul class="fa-ul">
+                <li>
+                    <a href="detail.html">
+                        <span class="text layui-elip">Web安全之跨站请求伪造CSRF,ASP.NET MVC 防范跨站请求伪造（CSRF）</span>
+                        <span class="muted">
+                            <i class="fa fa-clock-o"></i> 2017-06-01
+                        </span>
+                        <span class="muted">
+                            <i class="fa fa-user"></i> 作者
+                        </span>
+                        <span class="muted">
+                            <i class="fa fa-eye"></i> 12
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        break;
+    default:
+        break;
+}
+

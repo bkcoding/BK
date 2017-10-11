@@ -8,7 +8,7 @@
 <section class="container">
     <div class="content-wrap">
         <div class="content">
-            @foreach (var item in pf.GetModels(d=>true))
+            @foreach (var item in pf.GetModels(d => true))
             {
                 <article class="excerpt excerpt-1">
                     <a class="focus" href="http://bkcoding.cn/archives/587">
@@ -29,31 +29,10 @@
                     <p class="note">@item.excerpt</p>
                 </article>
             }
-
-           
         </div>
     </div>
     <aside class="sidebar">
-        <div class="widget shadow">
-            <div class="widget-title"><i class="fa fa-fire"></i><span>热文排行</span></div>
-            <ul class="fa-ul">
-                <li>
-                    <a href="detail.html">
-                        <span class="text layui-elip">Web安全之跨站请求伪造CSRF,ASP.NET MVC 防范跨站请求伪造（CSRF）</span>
-                        <span class="muted">
-                            <i class="fa fa-clock-o"></i> 2017-06-01
-                        </span>
-                        <span class="muted">
-                            <i class="fa fa-user"></i> 作者
-                        </span>
-                        <span class="muted">
-                            <i class="fa fa-eye"></i> 12
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        @Html.Action("Index", "Sidebar", new { type = "clock" })
     </aside>
 
 </section>
-
