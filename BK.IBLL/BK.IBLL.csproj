@@ -44,7 +44,6 @@
     <Compile Include="IBaseBLL.cs" />
     <Compile Include="IMfcBLL.cs" />
     <Compile Include="IPostsBLL.cs" />
-    <Compile Include="IReleaseBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

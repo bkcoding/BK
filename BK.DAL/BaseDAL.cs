@@ -35,6 +35,11 @@ namespace BK.DAL
         {
         }
 
+        public IQueryable<T> GetModels()
+        {
+            return db;
+        }
+
         public IQueryable<T> GetModels(Expression<Func<T, bool>> where)
         {
             return db.Where(where);

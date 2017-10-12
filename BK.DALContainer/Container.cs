@@ -40,7 +40,6 @@ namespace BK.DALContainer
         public static void Initialise()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<ReleaseDAL>().As<IReleaseDAL>().InstancePerLifetimeScope();
             builder.RegisterType<MfcDAL>().As<IMfcDAL>().InstancePerLifetimeScope();
             builder.RegisterType<PostsDAL>().As<IPostsDAL>().InstancePerLifetimeScope();
             container = builder.Build();

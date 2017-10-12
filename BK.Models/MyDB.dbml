@@ -1,12 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="www.bkcoding.com" Class="MyDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=www.bkcoding.com;Persist Security Info=True;User ID=sa" SettingsObjectName="BK.Models.Properties.Settings" SettingsPropertyName="www_bkcoding_comConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.release" Member="release">
-    <Type Name="release">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="blog.bkcoding.com" Class="MyDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=119.29.155.214;Initial Catalog=blog.bkcoding.com;Persist Security Info=True;User ID=sa" SettingsObjectName="BK.Models.Properties.Settings" SettingsPropertyName="www_bkcoding_comConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.mfc" Member="mfc">
+    <Type Name="mfc">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="postsID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="mfcID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="isTop" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="otherName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="orderby" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="icon" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.posts" Member="posts">
@@ -20,16 +21,9 @@
       <Column Name="excerpt" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
       <Column Name="readcount" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Column Name="content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.mfc" Member="mfc">
-    <Type Name="mfc">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="otherName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="orderby" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="icon" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="mfcID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="mfcName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="mfcOtherName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

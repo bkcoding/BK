@@ -1,38 +1,24 @@
-﻿@using BK.BLL;
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    PostsBLL pf = new PostsBLL();
+
 }
-<img src="~/res/img/timg.jpg" id="banner" width="100%" height="500" />
+<img src="~/res/img/banner.jpg" id="banner" width="100%" />
 <section class="container">
     <div class="content-wrap">
         <div class="content">
-            @foreach (var item in pf.GetModels(d => true))
-            {
-                <article class="excerpt excerpt-1">
-                    <a class="focus" href="http://bkcoding.cn/archives/587">
-                        <img src="@item.pic" alt="10年后编程还有意义吗？-BkCoding" class="thumb">
-                    </a>
-                    <header>
-                        <a class="cat" href="http://bkcoding.cn/archives/category/programmer">分类 <i></i></a>
-                        <h2>
-                            <a href="http://bkcoding.cn/archives/587" title="10年后编程还有意义吗？-BkCoding">@item.title</a>
-                        </h2>
-                    </header>
-                    <p class="meta">
-                        <time><i class="fa fa-clock-o"></i>@string.Format("{0:yyyy-MM-dd}", item.createTime)</time>
-                        <span class="author"><i class="fa fa-user"></i>@item.writer</span>
-                        <span class="pv"><i class="fa fa-eye"></i>阅读(@item.readcount)</span>
-                        <a class="pc" href="http://bkcoding.cn/archives/587#comments"><i class="fa fa-comments-o"></i>评论(0)</a>
-                    </p>
-                    <p class="note">@item.excerpt</p>
-                </article>
-            }
         </div>
+        <div id="more" style="width:820px;"></div>
     </div>
     <aside class="sidebar">
-        @Html.Action("Index", "Sidebar", new { type = "clock" })
+        @Html.Action("Index", "Sidebar")
     </aside>
 
 </section>
+@section js{
+    <script type="text/javascript">
+        layui.config({
+            base: '/res/js/'
+        }).use('index');
+    </script>
+}

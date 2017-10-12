@@ -1,0 +1,27 @@
+﻿@using BK.Models;
+@model IEnumerable<ViewPostsModelNoContent>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <article class="excerpt">
+        <a class="focus" href="@Url.Action("Details","Posts",new { id=item.ID,c=item.mfcName })">
+            <img src="@item.pic" class="thumb">
+        </a>
+        <header>
+            <a class="cat" href="@Url.Action("Index","Posts",new { c=item.mfcName })">@item.mfcName <i></i></a>
+            <h2>
+                <a href="@Url.Action("Details","Posts",new { id=item.ID,c=item.mfcName })">@item.title</a>
+            </h2>
+        </header>
+        <p class="meta">
+            <time><i class="fa fa-clock-o"></i>@string.Format("{0:yyyy-MM-dd}", item.time)</time>
+            <span class="author"><i class="fa fa-user"></i>@item.writer</span>
+            <span class="pv"><i class="fa fa-eye"></i>阅读(@item.read)</span>
+            @*<a class="pc" href=""><i class="fa fa-comments-o"></i>评论(0)</a>*@
+        </p>
+        <p class="note">@item.info</p>
+    </article>
+}
+

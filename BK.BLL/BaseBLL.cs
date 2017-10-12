@@ -34,6 +34,11 @@ namespace BK.BLL
             DAL.SaveChanges();
         }
 
+        public IQueryable<T> GetModels()
+        {
+            return DAL.GetModels();
+        }
+
         public IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda)
         {
             return DAL.GetModels(whereLambda);

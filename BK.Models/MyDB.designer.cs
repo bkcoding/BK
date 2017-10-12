@@ -22,7 +22,7 @@ namespace BK.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="www.bkcoding.com")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="blog.bkcoding.com")]
 	public partial class MyDBDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,15 +30,12 @@ namespace BK.Models
 		
     #region 可扩展性方法定义
     partial void OnCreated();
-    partial void Insertrelease(release instance);
-    partial void Updaterelease(release instance);
-    partial void Deleterelease(release instance);
-    partial void Insertposts(posts instance);
-    partial void Updateposts(posts instance);
-    partial void Deleteposts(posts instance);
     partial void Insertmfc(mfc instance);
     partial void Updatemfc(mfc instance);
     partial void Deletemfc(mfc instance);
+    partial void Insertposts(posts instance);
+    partial void Updateposts(posts instance);
+    partial void Deleteposts(posts instance);
     #endregion
 		
 		public MyDBDataContext() : 
@@ -71,11 +68,11 @@ namespace BK.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<release> release
+		public System.Data.Linq.Table<mfc> mfc
 		{
 			get
 			{
-				return this.GetTable<release>();
+				return this.GetTable<mfc>();
 			}
 		}
 		
@@ -86,31 +83,25 @@ namespace BK.Models
 				return this.GetTable<posts>();
 			}
 		}
-		
-		public System.Data.Linq.Table<mfc> mfc
-		{
-			get
-			{
-				return this.GetTable<mfc>();
-			}
-		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.release")]
-	public partial class release : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.mfc")]
+	public partial class mfc : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _id;
 		
-		private int _postsID;
+		private string _name;
 		
-		private int _mfcID;
+		private string _otherName;
 		
-		private System.DateTime _time;
+		private string _type;
 		
-		private bool _isTop;
+		private int _orderby;
+		
+		private string _icon;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -118,17 +109,19 @@ namespace BK.Models
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
-    partial void OnpostsIDChanging(int value);
-    partial void OnpostsIDChanged();
-    partial void OnmfcIDChanging(int value);
-    partial void OnmfcIDChanged();
-    partial void OntimeChanging(System.DateTime value);
-    partial void OntimeChanged();
-    partial void OnisTopChanging(bool value);
-    partial void OnisTopChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnotherNameChanging(string value);
+    partial void OnotherNameChanged();
+    partial void OntypeChanging(string value);
+    partial void OntypeChanged();
+    partial void OnorderbyChanging(int value);
+    partial void OnorderbyChanged();
+    partial void OniconChanging(string value);
+    partial void OniconChanged();
     #endregion
 		
-		public release()
+		public mfc()
 		{
 			OnCreated();
 		}
@@ -153,82 +146,102 @@ namespace BK.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_postsID", DbType="Int NOT NULL")]
-		public int postsID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string name
 		{
 			get
 			{
-				return this._postsID;
+				return this._name;
 			}
 			set
 			{
-				if ((this._postsID != value))
+				if ((this._name != value))
 				{
-					this.OnpostsIDChanging(value);
+					this.OnnameChanging(value);
 					this.SendPropertyChanging();
-					this._postsID = value;
-					this.SendPropertyChanged("postsID");
-					this.OnpostsIDChanged();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mfcID", DbType="Int NOT NULL")]
-		public int mfcID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_otherName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string otherName
 		{
 			get
 			{
-				return this._mfcID;
+				return this._otherName;
 			}
 			set
 			{
-				if ((this._mfcID != value))
+				if ((this._otherName != value))
 				{
-					this.OnmfcIDChanging(value);
+					this.OnotherNameChanging(value);
 					this.SendPropertyChanging();
-					this._mfcID = value;
-					this.SendPropertyChanged("mfcID");
-					this.OnmfcIDChanged();
+					this._otherName = value;
+					this.SendPropertyChanged("otherName");
+					this.OnotherNameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time", DbType="DateTime NOT NULL")]
-		public System.DateTime time
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string type
 		{
 			get
 			{
-				return this._time;
+				return this._type;
 			}
 			set
 			{
-				if ((this._time != value))
+				if ((this._type != value))
 				{
-					this.OntimeChanging(value);
+					this.OntypeChanging(value);
 					this.SendPropertyChanging();
-					this._time = value;
-					this.SendPropertyChanged("time");
-					this.OntimeChanged();
+					this._type = value;
+					this.SendPropertyChanged("type");
+					this.OntypeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isTop", DbType="Bit NOT NULL")]
-		public bool isTop
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_orderby", DbType="Int NOT NULL")]
+		public int orderby
 		{
 			get
 			{
-				return this._isTop;
+				return this._orderby;
 			}
 			set
 			{
-				if ((this._isTop != value))
+				if ((this._orderby != value))
 				{
-					this.OnisTopChanging(value);
+					this.OnorderbyChanging(value);
 					this.SendPropertyChanging();
-					this._isTop = value;
-					this.SendPropertyChanged("isTop");
-					this.OnisTopChanged();
+					this._orderby = value;
+					this.SendPropertyChanged("orderby");
+					this.OnorderbyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_icon", DbType="VarChar(20)")]
+		public string icon
+		{
+			get
+			{
+				return this._icon;
+			}
+			set
+			{
+				if ((this._icon != value))
+				{
+					this.OniconChanging(value);
+					this.SendPropertyChanging();
+					this._icon = value;
+					this.SendPropertyChanged("icon");
+					this.OniconChanged();
 				}
 			}
 		}
@@ -278,6 +291,12 @@ namespace BK.Models
 		
 		private string _content;
 		
+		private int _mfcID;
+		
+		private string _mfcName;
+		
+		private string _mfcOtherName;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -300,6 +319,12 @@ namespace BK.Models
     partial void OnreadcountChanged();
     partial void OncontentChanging(string value);
     partial void OncontentChanged();
+    partial void OnmfcIDChanging(int value);
+    partial void OnmfcIDChanged();
+    partial void OnmfcNameChanging(string value);
+    partial void OnmfcNameChanged();
+    partial void OnmfcOtherNameChanging(string value);
+    partial void OnmfcOtherNameChanged();
     #endregion
 		
 		public posts()
@@ -487,184 +512,62 @@ namespace BK.Models
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.mfc")]
-	public partial class mfc : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _name;
-		
-		private string _otherName;
-		
-		private string _type;
-		
-		private int _orderby;
-		
-		private string _icon;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnotherNameChanging(string value);
-    partial void OnotherNameChanged();
-    partial void OntypeChanging(string value);
-    partial void OntypeChanged();
-    partial void OnorderbyChanging(int value);
-    partial void OnorderbyChanged();
-    partial void OniconChanging(string value);
-    partial void OniconChanged();
-    #endregion
-		
-		public mfc()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mfcID", DbType="Int NOT NULL")]
+		public int mfcID
 		{
 			get
 			{
-				return this._id;
+				return this._mfcID;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._mfcID != value))
 				{
-					this.OnidChanging(value);
+					this.OnmfcIDChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._mfcID = value;
+					this.SendPropertyChanged("mfcID");
+					this.OnmfcIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mfcName", DbType="NVarChar(50)")]
+		public string mfcName
 		{
 			get
 			{
-				return this._name;
+				return this._mfcName;
 			}
 			set
 			{
-				if ((this._name != value))
+				if ((this._mfcName != value))
 				{
-					this.OnnameChanging(value);
+					this.OnmfcNameChanging(value);
 					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
+					this._mfcName = value;
+					this.SendPropertyChanged("mfcName");
+					this.OnmfcNameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_otherName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string otherName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mfcOtherName", DbType="NVarChar(50)")]
+		public string mfcOtherName
 		{
 			get
 			{
-				return this._otherName;
+				return this._mfcOtherName;
 			}
 			set
 			{
-				if ((this._otherName != value))
+				if ((this._mfcOtherName != value))
 				{
-					this.OnotherNameChanging(value);
+					this.OnmfcOtherNameChanging(value);
 					this.SendPropertyChanging();
-					this._otherName = value;
-					this.SendPropertyChanged("otherName");
-					this.OnotherNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string type
-		{
-			get
-			{
-				return this._type;
-			}
-			set
-			{
-				if ((this._type != value))
-				{
-					this.OntypeChanging(value);
-					this.SendPropertyChanging();
-					this._type = value;
-					this.SendPropertyChanged("type");
-					this.OntypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_orderby", DbType="Int NOT NULL")]
-		public int orderby
-		{
-			get
-			{
-				return this._orderby;
-			}
-			set
-			{
-				if ((this._orderby != value))
-				{
-					this.OnorderbyChanging(value);
-					this.SendPropertyChanging();
-					this._orderby = value;
-					this.SendPropertyChanged("orderby");
-					this.OnorderbyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_icon", DbType="VarChar(20)")]
-		public string icon
-		{
-			get
-			{
-				return this._icon;
-			}
-			set
-			{
-				if ((this._icon != value))
-				{
-					this.OniconChanging(value);
-					this.SendPropertyChanging();
-					this._icon = value;
-					this.SendPropertyChanged("icon");
-					this.OniconChanged();
+					this._mfcOtherName = value;
+					this.SendPropertyChanged("mfcOtherName");
+					this.OnmfcOtherNameChanged();
 				}
 			}
 		}

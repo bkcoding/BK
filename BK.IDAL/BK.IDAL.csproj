@@ -44,7 +44,6 @@
     <Compile Include="IBaseDAL.cs" />
     <Compile Include="IMfcDAL.cs" />
     <Compile Include="IPostsDAL.cs" />
-    <Compile Include="IReleaseDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

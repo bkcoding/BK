@@ -95,13 +95,12 @@
     <Content Include="res\css\font-awesome.min.css" />
     <Content Include="res\css\style.css" />
     <Content Include="res\fonts\fontawesome-webfont.svg" />
-    <Content Include="res\img\1.jpg" />
     <Content Include="res\img\alarm_dark.jpg" />
     <Content Include="res\img\alarm_light.jpg" />
+    <Content Include="res\img\banner.jpg" />
     <Content Include="res\img\bkcoding.png" />
-    <Content Include="res\img\timg.jpg" />
-    <Content Include="res\img\timg.png" />
     <Content Include="res\js\app.js" />
+    <Content Include="res\js\index.js" />
     <Content Include="res\js\moment.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -124,7 +123,7 @@
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
     <Content Include="Views\Posts\Details.cshtml" />
-    <Content Include="Views\Posts\View.cshtml" />
+    <Content Include="Views\Posts\GetPosts.cshtml" />
     <Content Include="Views\Sidebar\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

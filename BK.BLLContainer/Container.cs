@@ -40,7 +40,6 @@ namespace BK.BLLContainer
         public static void Initialise()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<ReleaseBLL>().As<IReleaseBLL>().InstancePerLifetimeScope();
             builder.RegisterType<MfcBLL>().As<IMfcBLL>().InstancePerLifetimeScope();
             builder.RegisterType<PostsBLL>().As<IPostsBLL>().InstancePerLifetimeScope();
             container = builder.Build();
