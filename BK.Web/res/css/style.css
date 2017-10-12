@@ -386,7 +386,45 @@ body {
         font-size: 12px;
         color: #bbb;
     }
+/*=================================
+*======= Proflie Sidebar ========
+*===============================*/
 
+.my-profile{
+	margin-bottom: 30px;
+}
+
+.my-profile .profile-bg {
+	position: relative;
+}
+
+.my-profile .profile-bg .profile-img {
+	position: absolute;
+	bottom: -45px;
+	left: 50%;
+	margin-left: -45px;
+}
+.my-profile .profile-bg .profile-img img {
+	width: 90px;
+	height: 90px;
+}
+
+.my-profile .profile-desc {
+	padding: 40px;
+	text-align: center;
+	color:#898989;
+}
+
+.my-profile .profile-desc h2{
+	padding-top: 20px;
+	margin: 0;
+}
+
+.my-profile .profile-desc span {
+	margin: 5px 0 10px;
+	display: block;
+	
+}
     
 /*-------------------------
 	The clocks

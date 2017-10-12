@@ -1,6 +1,22 @@
 ﻿@using BK.Models;
 @model IEnumerable<SidebarModel>
 <div class="widget shadow">
+    <div class="my-profile clearfix">
+        <div class="profile-bg">
+            <img class="img-responsive" src="~/res/img/login-banner.png" width="100%" height="150" />
+            <div class="profile-img">
+                <img class="img-responsive" src="http://demo.themeum.com/wordpress/prolog/wp-content/themes/prolog/images/profile-thumb.png">
+            </div>
+        </div>
+
+        <div class="profile-desc">
+            <h2>Rebecca Lucas</h2>
+            <span>Graphics Designer</span>
+            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra per inceptos</p>
+        </div>
+    </div>
+</div>
+<div class="widget shadow">
     <div id="clock" class="dark">
         <div class="display">
             <div class="weekdays"></div>
@@ -10,11 +26,12 @@
         </div>
     </div>
 </div>
+
 <div class="widget shadow">
     <div class="widget-title"><i class="fa fa-fire"></i><span>阅读排行</span></div>
     <ul class="fa-ul">
         @foreach (var item in Model)
-        {
+            {
             <li>
                 <a href="@Url.Action("Details","Posts",new {id=item.ID })">
                     <span class="text layui-elip">@item.title</span>
