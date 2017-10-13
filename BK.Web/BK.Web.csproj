@@ -90,6 +90,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="res\css\font-awesome.css" />
     <Content Include="res\css\font-awesome.min.css" />
@@ -127,6 +128,7 @@
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\Posts\GetPosts.cshtml" />
     <Content Include="Views\Sidebar\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\Blog.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

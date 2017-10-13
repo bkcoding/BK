@@ -39,7 +39,7 @@ namespace BK.Models
     #endregion
 		
 		public MyDBDataContext() : 
-				base(global::BK.Models.Properties.Settings.Default.www_bkcoding_comConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["myConnectionStrings"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
