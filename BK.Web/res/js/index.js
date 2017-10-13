@@ -5,7 +5,8 @@
         elem: '#more', //指定列表容器
         done: function (page, next) {
             //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
-            $.get('/Posts/GetPosts', { c: 'note', page: page, size: 5 }, function (res) {
+            var mfc = $(".content").attr("id");
+            $.get('/Posts/GetPosts', { c: mfc, page: page, size: 5 }, function (res) {
                 $(".content").append(res);
                 next('', Trim(res, "g") != '');
             });
@@ -27,5 +28,9 @@ function Trim(str, is_global) {
     }
 
     return result;
-
+}
+function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return "";
 }

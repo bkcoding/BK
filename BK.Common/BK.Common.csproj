@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ECB73BD3-4A14-4077-8EA9-AC6D7BEE4FF4}</ProjectGuid>
+    <ProjectGuid>{0D9BD5CD-51BD-47EE-B118-A546A9EA8A55}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BK.Web.Controllers</RootNamespace>
-    <AssemblyName>BK.Web.Controllers</AssemblyName>
+    <RootNamespace>BK.Common</RootNamespace>
+    <AssemblyName>BK.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -68,31 +69,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IndexController.cs" />
-    <Compile Include="PostsController.cs" />
+    <Compile Include="CheckFuns.cs" />
+    <Compile Include="DateTimeHelper.cs" />
+    <Compile Include="DecimalHelper.cs" />
+    <Compile Include="HtmlHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SidebarController.cs" />
+    <Compile Include="StringHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BK.BLLContainer\BK.BLLContainer.csproj">
-      <Project>{924933e2-0460-4348-a9f8-1fc7c307bb97}</Project>
-      <Name>BK.BLLContainer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BK.BLL\BK.BLL.csproj">
-      <Project>{23d80351-a086-4a6c-82b4-5d61c98a45a5}</Project>
-      <Name>BK.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BK.IBLL\BK.IBLL.csproj">
-      <Project>{835807f2-5ea9-48eb-98a7-7a1d4f4a2a37}</Project>
-      <Name>BK.IBLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BK.Models\BK.Models.csproj">
-      <Project>{684a137f-4ed8-4dbe-a947-811e29eac68c}</Project>
-      <Name>BK.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

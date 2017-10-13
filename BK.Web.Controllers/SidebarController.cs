@@ -12,12 +12,14 @@ namespace BK.Web.Controllers
     {
         PostsBLL db = new PostsBLL();
 
-        public PartialViewResult Index()
+        public PartialViewResult Index(int ishome=1)
         {
+            ViewBag.ishome = ishome;
             return PartialView(db.GetModels(d => d.mfcOtherName == "note").OrderByDescending(d=>d.readcount).ThenByDescending(d=>d.createTime).Select(d => new SidebarModel()
             {
                 ID = d.id,
                 title = d.title,
+                pic=d.pic,
                 writer = d.writer,
                 time = d.createTime,
                 read = d.readcount,

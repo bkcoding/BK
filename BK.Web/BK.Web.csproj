@@ -99,6 +99,8 @@
     <Content Include="res\img\alarm_light.jpg" />
     <Content Include="res\img\banner.jpg" />
     <Content Include="res\img\bkcoding.png" />
+    <Content Include="res\img\icon.jpg" />
+    <Content Include="res\img\iconbg.jpg" />
     <Content Include="res\js\app.js" />
     <Content Include="res\js\index.js" />
     <Content Include="res\js\moment.min.js" />
@@ -138,9 +140,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BK.BLL\BK.BLL.csproj">
-      <Project>{23d80351-a086-4a6c-82b4-5d61c98a45a5}</Project>
-      <Name>BK.BLL</Name>
+    <ProjectReference Include="..\BK.Common\BK.Common.csproj">
+      <Project>{0d9bd5cd-51bd-47ee-b118-a546a9ea8a55}</Project>
+      <Name>BK.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\BK.Models\BK.Models.csproj">
       <Project>{684a137f-4ed8-4dbe-a947-811e29eac68c}</Project>

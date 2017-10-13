@@ -6,13 +6,13 @@
 @foreach (var item in Model)
 {
     <article class="excerpt">
-        <a class="focus" href="@Url.Action("Details","Posts",new { id=item.ID,c=item.mfcName })">
+        <a class="focus" href="@Url.Action("Details","Posts",new { id=item.ID,c=item.mfcOtherName })">
             <img src="@item.pic" class="thumb">
         </a>
         <header>
-            <a class="cat" href="@Url.Action("Index","Posts",new { c=item.mfcName })">@item.mfcName <i></i></a>
+            <a class="cat" href="@Url.Action("Index","Posts",new { c=item.mfcOtherName })">@item.mfcName <i></i></a>
             <h2>
-                <a href="@Url.Action("Details","Posts",new { id=item.ID,c=item.mfcName })">@item.title</a>
+                <a href="@Url.Action("Details","Posts",new { id=item.ID,c=item.mfcOtherName })">@item.title</a>
             </h2>
         </header>
         <p class="meta">

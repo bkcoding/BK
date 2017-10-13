@@ -1,12 +1,18 @@
 ﻿@{
     ViewBag.Title = "Index";
+    ViewBag.nav = "index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 <img src="~/res/img/banner.jpg" id="banner" width="100%" />
+
 <section class="container">
+    <blockquote class="layui-elem-quote layui-quote-notice">
+        <i class="fa fa-volume-up" aria-hidden="true"></i> 
+        <span> 新站正式发布上线啦！本站使用asp.net mvc5 +layui 开发</span>
+    </blockquote>
     <div class="content-wrap">
-        <div class="content">
+        <div class="content" id="note">
         </div>
         <div id="more" style="width:820px;"></div>
     </div>

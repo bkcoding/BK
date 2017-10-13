@@ -5,7 +5,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>@ViewBag.Title</title>
+    <title>BkCoding - 个人博客</title>
     <link href="http://res.bkcoding.com/layui/css/layui.css" rel="stylesheet" />
     <link href="http://res.bkcoding.com/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/res/css/style.css" rel="stylesheet" />
@@ -14,36 +14,36 @@
     <div class="layui-fluid">
         <div class="layui-header header ">
             <div class="layui-main">
-
-                <a href="/" class="logo">BkCoding</a>
-
+                <a href="/" class="logo">
+                    <img src="~/res/img/bkcoding.png" />
+                </a>
                 <!-- 导航菜单 -->
                 <ul class="layui-nav" lay-filter="nav" id="nav-view">
-                    <li class="layui-nav-item layui-this">
+                    <li class="layui-nav-item @(ViewBag.nav=="index"?"layui-this":"")">
                         <a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
                     </li>
-                    <li class="layui-nav-item">
+                    <li class="layui-nav-item @(ViewBag.nav=="note"?"layui-this":"")">
                         <a href="@Url.Action("Index","Posts",new {c="note" })"><i class="fa fa-file-text fa-fw"></i>&nbsp;日常随笔</a>
                     </li>
-                    <li class="layui-nav-item">
+                    <li class="layui-nav-item @(ViewBag.nav=="programmer"?"layui-this":"")">
                         <a href="@Url.Action("Index","Posts",new {c="programmer" })"><i class="fa fa-tags fa-fw"></i>&nbsp;程序人生</a>
                     </li>
-                    <li class="layui-nav-item">
+                    <li class="layui-nav-item @(ViewBag.nav=="file"?"layui-this":"")">
                         <a href="@Url.Action("Index","Posts",new {c="file" })"><i class="fa fa-tags fa-fw"></i>&nbsp;资源分享</a>
                     </li>
-                    <li class="layui-nav-item">
+                    @*<li class="layui-nav-item @(ViewBag.nav=="about"?"layui-this":"")">
                         <a href="/Posts/Details/1"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
-                    </li>
+                    </li>*@
                 </ul>
-                <div class="layui-form component">
+                @*<div class="layui-form component">
                     <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-                </div>
+                </div>*@
             </div>
         </div>
         @RenderBody()
         <footer class="footer">
-            <p><span>Copyright</span> <span>&copy;</span> <span>@DateTime.Now.Year</span> <a href="/"> BKCoding </a> <span><a href="http://www.bkcoding.com"> www.bkcoding.com </a></span></p>
-            <p><a href="http://www.miibeian.gov.cn/" target="_blank">蜀ICP备16029915号-1</a></p>
+            <p><span>Copyright</span> <span>&copy;</span> <span>2017 @(DateTime.Now.Year!=2017?"- "+ DateTime.Now.Year : "")</span> <a href="/"> BKCoding </a> <span><a href="http://blog.bkcoding.com"> blog.bkcoding.com </a></span></p>
+            <p><a href="http://www.miibeian.gov.cn/" target="_blank">桂ICP备16001253号-2</a></p>
         </footer>
     </div>
     <script src="http://res.bkcoding.com/layui/layui.js"></script>

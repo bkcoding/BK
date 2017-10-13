@@ -1,5 +1,34 @@
-﻿
+﻿@using BK.Models;
 @{
+    var mfc = (mfc)ViewBag.mfc ?? new BK.Models.mfc();
     ViewBag.Title = "Index";
+    ViewBag.nav = mfc.otherName;
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="container">
+    <blockquote class="layui-elem-quote layui-quote-notice">
+        <span class="layui-breadcrumb" lay-separator=">">
+            <a href="/">首页</a>
+            @if (mfc.otherName != "")
+            {
+                <a href="@Url.Action("Index",new {c= mfc.otherName })">@mfc.name</a>
+            }
+        </span>
+    </blockquote>
+    <div class="content-wrap">
+        <div class="content" id="@mfc.otherName">
+        </div>
+        <div id="more" style="width:820px;"></div>
+    </div>
+    <aside class="sidebar">
+        @Html.Action("Index", "Sidebar", new { ishome = 0 })
+    </aside>
+
+</section>
+@section js{
+    <script type="text/javascript">
+        layui.config({
+            base: '/res/js/'
+        }).use('index');
+    </script>
 }

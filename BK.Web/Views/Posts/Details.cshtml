@@ -1,8 +1,44 @@
-﻿
+﻿@using BK.Models;
+@model posts
 @{
     ViewBag.Title = "Details";
+    ViewBag.nav = Html.QueryString("c");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="container">
+    <blockquote class="layui-elem-quote layui-quote-notice">
+        <span class="layui-breadcrumb" lay-separator=">">
+            <a href="/">首页</a>
+            @if (Model.mfcName != "")
+            {
+                <a href="@Url.Action("Index",new {c= Model.mfcOtherName})">@Model.mfcName</a>
+            }
+            <a>正文</a>
+        </span>
+    </blockquote>
+    <div class="content-wrap">
+        <div class="content details-content">
+            <header class="article-header">
 
-<h2>Details</h2>
+                <h1 class="article-title">
+                    <a href="@Url.Action("Details",new {id=Model.id,c=Model.mfcOtherName })">@Model.title</a>
+                </h1>
+                <div class="article-meta">
+                    <span class="item">@Model.createTime.ToStringFormat()</span>
+                    <span class="item">分类：<a href="@Url.Action("Index",new {c=Model.mfcOtherName })">@Model.mfcName</a></span>
+                    <span class="item post-views">阅读(@Model.readcount)</span>
+                    <span class="item"></span>
 
+                </div>
+
+            </header>
+            <article class="article-content">
+                @Html.Raw(Model.content)
+            </article>
+        </div>
+        
+    </div>
+    <aside class="sidebar">
+        @Html.Action("Index", "Sidebar", new { ishome = 0 })
+    </aside>
+</section>

@@ -4,23 +4,26 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using System.Web.Mvc;
-using BK.BLL;
+using BK.IBLL;
 using BK.Models;
 
 namespace BK.Web.Controllers
 {
     public class PostsController : Controller
     {
-        PostsBLL db = new PostsBLL();
-
-        public ActionResult Index()
+        IPostsBLL db = BLLContainer.Container.Resolve<IPostsBLL>();
+        IMfcBLL mf= BLLContainer.Container.Resolve<IMfcBLL>();
+        public ActionResult Index(string c="")
         {
+            var mfc = mf.GetModels(d => d.otherName == c).FirstOrDefault();
+            ViewBag.mfc = mfc;
             return View();
         }
 
         public ActionResult Details(int id=0)
         {
             var model = db.Read(id);
+            
             return View(model);
         }
 
@@ -34,6 +37,7 @@ namespace BK.Web.Controllers
                 time = d.createTime,
                 read = d.readcount,
                 mfcName=d.mfcName,
+                mfcOtherName=d.mfcOtherName,
                 info=d.excerpt
             }));
         }

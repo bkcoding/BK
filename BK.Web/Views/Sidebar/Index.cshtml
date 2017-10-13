@@ -1,51 +1,64 @@
 ﻿@using BK.Models;
 @model IEnumerable<SidebarModel>
-<div class="widget shadow">
-    <div class="my-profile clearfix">
-        <div class="profile-bg">
-            <img class="img-responsive" src="~/res/img/login-banner.png" width="100%" height="150" />
-            <div class="profile-img">
-                <img class="img-responsive" src="http://demo.themeum.com/wordpress/prolog/wp-content/themes/prolog/images/profile-thumb.png">
+@if (ViewBag.ishome != 0)
+{
+    <div class="widget shadow">
+        <div class="my-profile clearfix">
+            <div class="profile-bg">
+                <img class="img-responsive" src="~/res/img/iconbg.jpg" width="100%" height="100" />
+                <div class="profile-img">
+                    <img class="img-responsive" src="~/res/img/icon.jpg">
+                </div>
+            </div>
+            <div class="profile-desc">
+                <p>Hello World完美的展现我作为一名程序员无与伦比的江湖地位，低调中还透出着那么一丝丝奢华</p>
+                <p>
+                    <i class="fa fa-location-arrow"></i> 广西 - 南宁
+                </p>
+            </div>
+            <div class="social-share">
+                <ul>
+                    <li><a class="envelope" href="mailto:704150291@qq.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                    <li><a class="qq" href="http://wpa.qq.com/msgrd?v=3&uin=704150291&site=qq&menu=yes" target="_blank"><i class="fa fa-qq"></i></a></li>
+                    <li><a class="github" href="https://github.com/bkcoding" target="_blank"><i class="fa fa-github"></i></a></li>
+                    <li><a class="linkedin" href="#"><i class="fa fa-info-circle"></i></a></li>
+                </ul>
             </div>
         </div>
+    </div>
 
-        <div class="profile-desc">
-            <h2>Rebecca Lucas</h2>
-            <span>Graphics Designer</span>
-            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra per inceptos</p>
+        <div class="widget shadow">
+            <div id="clock" class="dark">
+                <div class="display">
+                    <div class="weekdays"></div>
+                    <div class="ampm"></div>
+                    <div class="alarm"></div>
+                    <div class="digits"></div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<div class="widget shadow">
-    <div id="clock" class="dark">
-        <div class="display">
-            <div class="weekdays"></div>
-            <div class="ampm"></div>
-            <div class="alarm"></div>
-            <div class="digits"></div>
-        </div>
-    </div>
-</div>
+}
+
 
 <div class="widget shadow">
     <div class="widget-title"><i class="fa fa-fire"></i><span>阅读排行</span></div>
     <ul class="fa-ul">
         @foreach (var item in Model)
             {
-            <li>
-                <a href="@Url.Action("Details","Posts",new {id=item.ID })">
-                    <span class="text layui-elip">@item.title</span>
-                    <span class="muted">
-                        <i class="fa fa-clock-o"></i> @string.Format("{0:yyyy-MM-dd}", item.time)
-                    </span>
-                    <span class="muted">
-                        <i class="fa fa-user"></i> @item.writer
-                    </span>
-                    <span class="muted">
-                        <i class="fa fa-eye"></i> @item.read
-                    </span>
-                </a>
-            </li>
+        <li>
+            <a href="@Url.Action("Details","Posts",new {id=item.ID })">
+                <span class="text layui-elip">@item.title</span>
+                <span class="muted">
+                    <i class="fa fa-clock-o"></i> @string.Format("{0:yyyy-MM-dd}", item.time)
+                </span>
+                <span class="muted">
+                    <i class="fa fa-user"></i> @item.writer
+                </span>
+                <span class="muted">
+                    <i class="fa fa-eye"></i> @item.read
+                </span>
+            </a>
+        </li>
         }
 
     </ul>
