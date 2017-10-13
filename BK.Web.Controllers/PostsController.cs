@@ -9,7 +9,7 @@ using BK.Models;
 
 namespace BK.Web.Controllers
 {
-    public class PostsController : Controller
+    public class PostsController : BaseController
     {
         IPostsBLL db = BLLContainer.Container.Resolve<IPostsBLL>();
         IMfcBLL mf= BLLContainer.Container.Resolve<IMfcBLL>();

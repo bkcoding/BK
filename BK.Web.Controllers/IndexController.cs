@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace BK.Web.Controllers
 {
-    public class IndexController : Controller
+    public class IndexController : BaseController
     {
         public ActionResult Index()
         {

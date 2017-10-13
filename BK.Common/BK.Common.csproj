@@ -72,9 +72,11 @@
     <Compile Include="CheckFuns.cs" />
     <Compile Include="DateTimeHelper.cs" />
     <Compile Include="DecimalHelper.cs" />
+    <Compile Include="ETagActionFilter.cs" />
     <Compile Include="HtmlHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringHelper.cs" />
+    <Compile Include="WhitespaceFilterAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

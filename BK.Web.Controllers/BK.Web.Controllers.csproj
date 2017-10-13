@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseController.cs" />
     <Compile Include="IndexController.cs" />
     <Compile Include="PostsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +85,10 @@
     <ProjectReference Include="..\BK.BLL\BK.BLL.csproj">
       <Project>{23d80351-a086-4a6c-82b4-5d61c98a45a5}</Project>
       <Name>BK.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BK.Common\BK.Common.csproj">
+      <Project>{0d9bd5cd-51bd-47ee-b118-a546a9ea8a55}</Project>
+      <Name>BK.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\BK.IBLL\BK.IBLL.csproj">
       <Project>{835807f2-5ea9-48eb-98a7-7a1d4f4a2a37}</Project>

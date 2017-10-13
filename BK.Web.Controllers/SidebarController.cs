@@ -8,7 +8,7 @@ using BK.Models;
 
 namespace BK.Web.Controllers
 {
-    public class SidebarController : Controller
+    public class SidebarController : BaseController
     {
         PostsBLL db = new PostsBLL();
 
