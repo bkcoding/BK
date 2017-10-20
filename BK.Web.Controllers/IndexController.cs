@@ -11,6 +11,10 @@ namespace BK.Web.Controllers
         public ActionResult Index()
         {
             return View();
-        }        
+        }
+        public ActionResult Table()
+        {
+            return View();
+        }
     }
 }

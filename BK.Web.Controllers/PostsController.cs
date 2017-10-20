@@ -42,5 +42,22 @@ namespace BK.Web.Controllers
             }));
         }
 
+        public ActionResult GetTable(int page, int limit)
+        {
+            var model = db.GetModelsByPage(limit, page, false, d => d.createTime, d => d.mfcOtherName == "note").Select(d => new ViewPostsModelNoContent()
+            {
+                ID = d.id,
+                title = d.title,
+                writer = d.writer,
+                pic = d.pic,
+                time = d.createTime,
+                read = d.readcount,
+                mfcName = d.mfcName,
+                mfcOtherName = d.mfcOtherName,
+                info = d.excerpt
+            });
+            return Json(model);
+        }
+
     }
 }

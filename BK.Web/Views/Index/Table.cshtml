@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Table</title>
+    <link href="http://res.bkcoding.com/layui/css/layui.css" rel="stylesheet" />
+</head>
+<body>
+    <table id="demo" lay-filter="test"></table>
+    <script src="http://res.bkcoding.com/layui/layui.js"></script>
+    <script>
+        layui.use('table', function () {
+            var table = layui.table;
+            table.render({
+                elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
+                , height: 315 //容器高度
+                , cols: [[
+                    { field: 'ID' },
+                    { field: 'title' },
+                    { field: 'time' },
+                    { field: 'read' },
+                    { field: 'mfcName' }
+                ]] //设置表头
+                , url: '/Posts/GetTable?page=2&limit=2'
+                , method: 'post'
+                , page: true
+            });
+        });
+    </script>
+</body>
+</html>
