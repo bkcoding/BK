@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheckFuns.cs" />
+    <Compile Include="CompressFilter.cs" />
     <Compile Include="DateTimeHelper.cs" />
     <Compile Include="DecimalHelper.cs" />
     <Compile Include="ETagActionFilter.cs" />

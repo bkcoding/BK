@@ -21,17 +21,26 @@
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
                 , height: 315 //容器高度
                 , cols: [[
-                    { field: 'ID' },
-                    { field: 'title' },
-                    { field: 'time' },
-                    { field: 'read' },
-                    { field: 'mfcName' }
+                    { field: 'ID', title: 'ID', width :220 },
+                    { field: 'title', title: '标题', width: 220},
+                    { field: 'time', title: '时间', width: 220 },
+                    { field: 'read', title: '浏览次数', width: 220 },
+                    { field: 'mfcName', title: '分类', width: 220 },
+                    { field: 'mfcOtherName', title: '分类别名', width: 220 },
+                    { field: 'info', title: '摘要', width: 220 },
+                    { field: 'abc', title: 'abc', width: 220, templet: '<div>{{d.abc.a}}+{{d.abc.b}}</div>' }
                 ]] //设置表头
-                , url: '/Posts/GetTable?page=2&limit=2'
+                , url: '/Posts/GetTable2?page=5&limit=2'
                 , method: 'post'
                 , page: true
+                , limits: [2, 3, 4, 150, 300]
+                , limit: 2,
+                curr:2
             });
         });
+    </script>
+    <script type="text/html" id="titleTpl">
+       {{d.abc.a}}+{{d.abc.b}}
     </script>
 </body>
 </html>

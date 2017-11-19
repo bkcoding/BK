@@ -54,9 +54,27 @@ namespace BK.Web.Controllers
                 read = d.readcount,
                 mfcName = d.mfcName,
                 mfcOtherName = d.mfcOtherName,
-                info = d.excerpt
+                info = ""
             });
-            return Json(model);
+            return Json(new {data= model, code=0, msg="成功", count=db.GetModels().Count() });
+        }
+
+        public ActionResult GetTable2(int page, int limit)
+        {
+            var model = db.GetModelsByPage(limit, page, false, d => d.createTime, d => d.mfcOtherName == "note").Select(d => new 
+            {
+                ID = d.id,
+                title = d.title,
+                writer = d.writer,
+                pic = d.pic,
+                time = d.createTime,
+                read = d.readcount,
+                mfcName = d.mfcName,
+                mfcOtherName = d.mfcOtherName,
+                info = "",
+                abc = new {a=1,b=2,c=3 }
+            });
+            return Json(new { data = model, code = 0, msg = "成功", count = db.GetModels().Count() });
         }
 
     }
